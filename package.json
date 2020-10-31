@@ -42,6 +42,7 @@
     "rollup-plugin-svgo": "^1.1.0",
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
+    "ts-node": "^9.0.0",
     "tslib": "^1.10.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.5"

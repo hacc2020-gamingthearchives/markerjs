@@ -83,6 +83,7 @@ export class MarkerBase {
 
     public getState(): MarkerBaseState {
         const config: MarkerBaseState = {
+            markerId: Date.now.toString(),
             markerType: this.markerTypeName,
             width: this.width,
             height: this.height,
