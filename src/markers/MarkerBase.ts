@@ -17,6 +17,8 @@ export class MarkerBase {
 
     public defs: SVGElement[] = [];
 
+    protected markerId: string;
+
     protected width: number = 200;
     protected height: number = 50;
 
@@ -83,7 +85,7 @@ export class MarkerBase {
 
     public getState(): MarkerBaseState {
         const config: MarkerBaseState = {
-            markerId: Date.now().toString(),
+            markerId: this.markerId,
             markerType: this.markerTypeName,
             width: this.width,
             height: this.height,
@@ -95,6 +97,7 @@ export class MarkerBase {
     }
 
     public restoreState(state: MarkerBaseState) {
+        this.markerId = state.markerId;
         this.width = state.width;
         this.height = state.height;
 

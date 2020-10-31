@@ -10,6 +10,7 @@ export default interface Config {
   renderImageQuality?: number;
   renderMarkersOnly?: boolean;
   previousState?: MarkerAreaState;
+  showUi: boolean;
 }
 
 export interface MarkerColors {

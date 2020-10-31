@@ -41,6 +41,7 @@ export class MarkerArea {
     private renderImageType?: string;
     private renderImageQuality?: number;
     private renderMarkersOnly?: boolean;
+    private showUi: boolean = true;
 
     private previousState?: MarkerAreaState;
 
@@ -125,6 +126,9 @@ export class MarkerArea {
         if (config && config.previousState) {
             this.previousState = config.previousState;
         }
+        if (config && config.showUi !== undefined) {
+            this.showUi = config.showUi;
+        }
         this.width = target.clientWidth;
         this.height = target.clientHeight;
 
@@ -138,7 +142,9 @@ export class MarkerArea {
 
         this.open();
 
-        this.showUI();
+        if (this.showUi) {
+            this.showUI();
+        }
     }
 
     public open = () => {
@@ -238,6 +244,13 @@ export class MarkerArea {
         return config;
     }
 
+    public restoreSavedState = (savedState: MarkerAreaState) => {
+        if (savedState !== null) {
+            this.previousState = savedState;
+            this.restoreState();
+        }
+    }
+
     private restoreState = () => {
         if (this.previousState) {
             this.previousState.markers.forEach(markerState => {
@@ -274,7 +287,7 @@ export class MarkerArea {
                         console.log(`missing marker type state handler: ${markerState.markerType}`);
                     }
                 }
-            })
+            });
         }
     }
 
